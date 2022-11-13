@@ -1,0 +1,20 @@
+{
+  "name": "fenty",
+  "version": "1.0.0",
+  "description": "My First github example spa page for web store built with html5 and jquery\r IsamHalfa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isamgit/fenty.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isamgit/fenty/issues"
+  },
+  "homepage": "https://github.com/isamgit/fenty#readme",
+  "keywords": []
+}

@@ -1,0 +1,760 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <title>Halfa Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet"href="css/halfabootstrap.css"><!-- store -->
+    <style>
+        h5 {
+            transition-property: top, left;
+            transition-duration: 1s, 1s;
+            transition-delay: 0s, 1s;
+        }
+        div{background-color:powderblue}
+        marquee{background-color:powderblue}
+       .TBS div .col-xs-4{background-color:powderblue}
+       div .carousel-caption{display: none}
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            height: 490px;max-height: 475px;
+            margin: auto;border:  0px !important;
+        }
+        .carousel-inner > .item{background-color:skyblue;}
+        .carousel-inner  .item  img{background-color:lightblue;}
+        .carousel-control.right,
+        .carousel-control.left,
+        .carousel .item,
+        .carousel-inner,
+        .carousel-inner > .item > img {height: 490px;max-height: 475px;
+            border: 0px !important;border-radius: 10px;
+        }
+        .carousel {
+              border: 0px !important;
+            border-radius: 10px;height: 490px;max-height: 475px;
+            text-align: center;  /* to center the radio buttons */
+        }
+        .carousel-control.left, .carousel-control.right {
+            background-image: none
+        }
+        div #cloth1,#food1,#Formu1,#Contact1,.store,.Acc,#myModal2{display: none}
+       body{background:url('Images/5.jpg') fixed no-repeat 30% 50% rgb(34, 182, 253);background-size:100% 100%}
+        div .col-xs-10 span{ color: blue;  }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Typer.js"></script>
+    <script>//$('ul li a').click(function(){ $('li a').removeClass("active"); $(this).addClass("active");
+        $(document).ready(function () {
+            agree=$('input[name=agree]:checked').val();
+            if(!agree) {$('#sent').addClass('disabled');}
+            $('.contactinfo').click(function(){// start info
+                                    // gen=$('input[name=paytype]:checked').val();
+                 $('#inner').slideUp('slow');
+
+              });//End of Info
+            $('.contactinfo').click(function () {
+                 $('#myModal').modal({backdrop:'static'});
+                $('#farewell').attr('src',img1);
+            });
+            $('#myModal').on({
+                'shown.bs.modal':function () {
+                    $('#inner').slideUp('slow');
+                },
+                'hidden.bs.modal':function () {
+                    $('#inner').slideDown('slow');
+                    $('input').val('');$('textarea').val('');
+                }
+            });
+            $('a:last').click(function () {
+                $('#myModal').modal('hide');
+            });
+ $('.Home').addClass('active');$('.Frst').addClass('active');
+
+ $('.navbar-nav a').click(function () {
+x=$(this).html();//$('.container h1').html(x);
+ $(this).removeClass('active')
+//  $(this).addClass('active')
+if(x=='Home'){
+    $('.Home').addClass('active');    $('.Stores').removeClass('active');
+    $('.Forum').removeClass('active');    $('.Contact').removeClass('active');
+    $('#Home1').css('display','block'); $('.store').css('display','none');
+    $('#Contact1').css('display','none');$('#Formu1').css('display','none');
+    $('.Acc').css('display','none');
+                   }
+               else if(x=='Store'){
+                    $('.Home').removeClass('active');    $('.Stores').addClass('active');
+                    $('.Forum').removeClass('active');    $('.Contact').removeClass('active');
+    $('#Home1').css('display','none'); $('.store').css('display','block');
+    $('#Contact1').css('display','none');$('#Formu1').css('display','none');
+    $('.Acc').css('display','block');
+}
+               else if(x=='Forum'){
+                    $('.Home').removeClass('active');    $('.Stores').removeClass('active');
+                    $('.Forum').addClass('active');    $('.Contact').removeClass('active');
+    $('#Home1').css('display','none'); $('.store').css('display','none');
+    $('#Contact1').css('display','none');$('#Formu1').css('display','block');
+    $('.Acc').css('display','none');
+                }
+else if(x=='Contact us'){
+    $('.Home').removeClass('active');    $('.Stores').removeClass('active');
+    $('.Forum').removeClass('active');    $('.Contact').addClass('active');
+    $('#Home1').css('display','none'); $('.store').css('display','none');
+    $('#Contact1').css('display','block');$('#Formu1').css('display','none');
+    $('.Acc').css('display','none');
+               }
+            });
+  $('.nav-tabs .Mytab a').click(function () {
+         tb=$(this).attr('id');//alert('#'+tb+'s');
+          if (tb=='elec'){
+         $('#elec1').css('display','block');
+         $('#cloth1').css('display','none');
+         $('#food1').css('display','none');
+              $('.elecs').addClass("active");
+              $('.cloths').removeClass("active");
+              $('.foods').removeClass("active");
+              }
+              else if (tb=='cloth'){
+     $('#cloth1').css('display','block');
+         $('#elec1').css('display','none');
+         $('#food1').css('display','none');
+              $('.elecs').removeClass("active");
+              $('.cloths').addClass("active");
+              $('.foods').removeClass("active");
+        }
+        else  if (tb=='food') {
+         $('#food1').css('display','block');
+         $('#cloth1').css('display','none');
+         $('#elec1').css('display','non');
+              $('.foods').addClass("active");
+              $('.elecs').removeClass("active");
+              $('.cloths').removeClass("active");
+     }
+ })
+            $("#addcomment").click(function(){///Adding new comments
+                intImg = 3;
+                name=$('#name1').val();
+                gender=$('input[name=gender]:checked').val();//var isChecked = $('#rdSelect').prop('checked');
+                title=$('#title1').val();//var isChecked = $('#rdSelect').attr('checked')?true:false;
+                comment=$('#comment1').val();///alert(name + title + gender + comment);
+                if(name.length <=0 || title.length <=0 || comment.length<=0)
+                {
+                    $('.alert:last').addClass('in');
+                    setTimeout(function () {
+                        $('.alert:last').removeClass('in');
+                    },3000);
+                }
+                else{
+            var liTag ='<li class="list-group-item" style="background-color:lightsteelblue">';
+                liTag +='<div class="media">';
+                liTag +='<div class="media-body well">';
+                liTag +='<h3>'+title+'</h3>';
+                liTag +='<p>'+comment+'</p>';
+                liTag +='</div>';
+                liTag +='<div class="media-right">';//+='<img src="images/"male.png" class="media-object center-block" style="width:64px">';
+                liTag +='<img src="" id=""  alt="Halfa" title=intImg  class="ccc media-object center-block" style="width:64px">';
+                liTag +='<h5 class="col-xs-4">Name:'+name+'</h5><br>';
+                liTag +='<h5 class="col-xs-4" style="margin-right: 40%">Gender:'+gender+'</h5>';
+                liTag +='</div>';
+                liTag +='</div>';
+                liTag +='</li>';//parseInt()
+                $('#Formu1 ul').append(liTag);
+                $('#Formu1 ul img:last').attr('src','Images/'+gender+'.png')
+                intImg++;
+                //$('input[name=gender]:checked').val();
+           $('#name1').val(''); $('#title1').val('');
+               $('textarea').val('');
+
+                    $('.alert:first').addClass('in');
+                    setTimeout(function () {
+                        $('.alert:first').removeClass('in');
+                    },3000);}
+            });
+           // $("#myCarousel").carousel({interval: 500});
+            $('.buys').click(function() {
+                pid=  $(this).attr('id');//alert(pid);
+                price=parseFloat($('#k'+pid[1]).val());
+                qty=  parseFloat($('#q'+pid[1]).val());
+                total=(price*qty).valueOf();
+                $('#myModal2').modal({backdrop:false});  //'static'
+                $('#myModal2 .col-xs-10 #price').val(total+' SDG').valueOf();
+            });
+            $('#sdg').click(function() {
+                price2=total;
+                $('#myModal2 .col-xs-10 #price').val(total +' SDG');
+            });
+            $('#dollar').click(function() {
+                price2=total;
+                $('#myModal2 .col-xs-10 #price').val(total/40+' $');
+            });
+            $('#sent').click(function () {
+                $('#myModal2').modal('hide');
+            });
+
+            $('#g1').click(function () {
+               $('#Contact1 img').attr('src','Images/male.png')
+                img1=$('#Contact1 img').attr('src');
+            });
+            $('#g2').click(function () {
+                $('#Contact1 img').attr('src','Images/female.png')
+                img1=$('#Contact1 img').attr('src');
+            });
+            $('#agree').click(function () {
+                agree=$('input[name=agree]:checked').val();
+                 if(!agree) {$('#sent').addClass('disabled');}
+                else   {$('#sent').removeClass('disabled');}
+            });
+                    });
+    </script>
+</head>
+<body>
+<!-- Header --->
+<!--<div class="row" >
+    <div class="col-xs-12 thumb " style="width: 100%  ;padding-bottom:0px " >
+        <img src="images/header1.jpg" style="width:100%; height: 150px ; opacity:0.6 ; border-radius:25px " >
+
+    </div>
+</div>
+
+<table width="100%" height="60" border="2" ALIGN="center">
+    <tr>
+        <td>
+
+            <marquee  bgcolor="grey" width="100%" direction="left" >
+                <img src="images/cart2.gif" style="width:100%; height:70px  " >
+
+            </marquee>
+        </td>
+    </tr>
+    </table> -->
+<!--header--->
+
+<nav class="navbar navbar-inverse  navrbar-fixed-top halfa"><!-- Start NavBar-->
+    <div class="navbar-header">
+        <button class="navbar-toggle"   data-toggle="collapse" data-target="#ids">
+            <span class ="icon-bar"></span>
+            <span class ="icon-bar"></span>
+            <span class ="icon-bar"></span>
+        </button>
+        <img src="Images/Sudani.gif" class="navbar-brand">
+        <a class="navbar-brand" href="#">Halfa Sore &trade;</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="ids">
+        <ul class ="nav navbar-nav">
+            <li class="Home"><a href="#">Home</a></li>
+            <li class="Stores"><a href="#">Store</a></li>
+            <li class="Forum"><a href="#">Forum</a></li>
+            <li class="Contact"><a href="#">Contact us</a></li>
+        </ul>
+    </div>
+</nav><!-- End NavBar-->
+<div class="col-xs-2 Acc"><!-- Start Accordion-->
+         <div class="panel-group" id="accordion">
+             <div class="panel panel-primary">
+                 <div class="panel-heading">
+                     <h4 class="panel-title">
+                         <a href="#col1" data-parent="#accordion" data-toggle="collapse">Prices</a>
+                     </h4>
+                 </div>
+                 <div id="col1" class="collapse panel-collapse">
+                     <div class="list-group">
+                         <a href="#" class="list-group-item">2000-3000</a>
+                         <a href="#" class="list-group-item">3000-4000</a>
+                         <a href="#" class="list-group-item">4000-5000</a>
+
+                     </div>
+                 </div>
+             </div>
+
+             <div class="panel panel-primary">
+                 <div class="panel-heading">
+                     <h4 class="panel-title">
+                         <a href="#col2" data-parent="#accordion" data-toggle="collapse">Companies</a>
+                     </h4>
+                 </div>
+                 <div id="col2" class="collapse panel-collapse">
+                     <div class="list-group">
+                         <a href="#" class="list-group-item">HP</a>
+                         <a href="#" class="list-group-item">Toshiba</a>
+                         <a href="#" class="list-group-item">Samsung</a>
+
+                     </div>
+                 </div>
+             </div>
+             <div class="panel panel-primary">
+                 <div class="panel-heading">
+                     <h4 class="panel-title">
+                         <a href="#col3" data-parent="#accordion" data-toggle="collapse">Company</a>
+                     </h4>
+                 </div>
+                 <div id="col3" class="collapse panel-collapse">
+                     <div class="list-group">
+                         <a href="#" class="list-group-item">New</a>
+                         <a href="#" class="list-group-item">USed</a>
+                           </div>
+                 </div>
+         </div>
+
+     </div><!--acord-->
+    <table  cellpadding="3" cellspacing="3" border="1" Height="400" width="150" >
+        <tr>
+            <td class="alt2" Style="background-color:powderblue">
+                <center>
+                    <marquee behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()" direction="up" scrolldelay="10" scrollamount="1" style="text-align: center; font-family: anduls; font-size: 40px" height="300">
+                        <div class="rightalt" dir="rtl" align="right" >
+                            <font dir="rtl" color="blue" size="12"></font>
+                            <pre style="background-color:powderblue;color:black; size:22px">
+can you ads for    your store
+ thing
+through thiswebsite
+caun you buys
+any thing from
+here
+ can you ads for    your
+ thing
+through thiswebsite
+caun you buys
+any thing from
+here
+can you ads for    your
+ thing
+through thiswebsite
+caun you buys
+any thing from
+here
+</pre>
+  </font><br><br>
+ </div>
+                    </marquee>
+            </td>
+        </tr>
+<tr><td>
+    </td>
+    </tr>
+    </table>
+</div><!-- End Accordion-->
+<div class="col-xs-8 col-offset-2 well " id="Home1" style="margin-left: 15%"><!--Home1-->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+            <li data-target="#myCarousel" data-slide-to="6"></li>
+            <li data-target="#myCarousel" data-slide-to="7"></li>
+            <li data-target="#myCarousel" data-slide-to="8"></li>
+            <li data-target="#myCarousel" data-slide-to="9"></li>
+            <li data-target="#myCarousel" data-slide-to="10"></li>
+            <li data-target="#myCarousel" data-slide-to="11"></li>
+            <li data-target="#myCarousel" data-slide-to="12"></li>
+            <li data-target="#myCarousel" data-slide-to="13"></li>
+            <li data-target="#myCarousel" data-slide-to="14"></li>
+            <li data-target="#myCarousel" data-slide-to="15"></li>
+            <li data-target="#myCarousel" data-slide-to="16"></li>
+        </ol>
+        <!-- Wrapper for slides thumbnail -->
+        <div class="carousel-inner">
+            <div class="item active ">
+                <img src="Images/lap1.jpg" alt="Lab2" style="width:70%;height:120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>Lab1</h3>
+                    <p>wanrnty!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/lab2.jpg" alt="Lab2"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>Lab2</h3>
+                    <p>wanrnty!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/lab3.jpg" alt="Lab3"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>Lab3</h3>
+                    <p>wanrnty!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/LCD1.jpg" alt="LCD1"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>Kassala</h3>
+                    <p>wanrnty!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/lcd2.jpg" alt="lcd2"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>lcd2</h3>
+                    <p>wanrnty!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/cloth3.jpg" alt="Coth4"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>cloth3</h3>
+                    <p>wanrnty!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/cloth4.jpg" alt="cloth4"  style="width:70%;height:120%";margin: auto">
+                <div class="carousel-caption">
+                    <h3>cloth4</h3>
+                    <p>wanrnty!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/clothes2.jpg" alt="cloth"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>clothes</h3>
+                    <p>wanrnty!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/clothkid.jpg" alt="kid cloth"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>kid cloth</h3>
+                    <p>wanrnty!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/clothkid2.jpg" alt="cloth"  style="width:70%;height:120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>cloth for kid</h3>
+                    <p></p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/fruit1.jpg" alt="fruit"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>fruit</h3>
+                    <p></p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/fruit2.jpg" alt="fruit"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>fruit</h3>
+                    <p>fresh!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/fruit3.jpg" alt="fruit"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>fruit</h3>
+                    <p>fresh!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/vigitable1.jpg" alt=""  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>vigitable1</h3>
+                    <p>Amazing City!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/vigitable2.jpg" alt="Chicago"  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>vigitable1</h3>
+                    <p></p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="Images/vigitable3.jpg" alt=""  style="width:70%;height: 120%;margin: auto">
+                <div class="carousel-caption">
+                    <h3>vigitable1</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+
+</div><!--Home1-->
+<div class="col-xs-10 store" style="border:outset skyblue;border-radius:7px;width:80%;height: 555px"><!-- End Tabs + store-->
+    <ul class="nav nav-tabs">
+        <li class="Mytab Frst elecs"><a id="elec" href="#" style="font-size:17px;color:darkblue; box-shadow:0px 0px 10px black">Electronics</a></li><!--class="active"-->
+        <li class="Mytab cloths"><a id="cloth" href="#" style="font-size:17px;color:darkblue; box-shadow:0px 0px 10px black">Clothes</a></li>
+        <li class="Mytab foods"><a id="food" href="#" style="font-size:17px;color:darkblue; box-shadow:0px 0px 10px black">Food</a></li>
+    </ul>
+<div class="TBS" id="elec1" ><!--elec-->
+
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/lap1.jpg" style="width: 250px;height: 200px;opacity:0.4">
+      <!--  <div class="caption"> adf asdasdasd</div> -->
+        <div class="col-xs-10"> <input type="hidden" id="k1" value="15500"/> <span>Sony C550   <del>19500</del> <mark id="m1">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q1" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p1" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+       <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/canon3.jpg" style="width: 250px;height: 200px;opacity:0.4"> <!-- style="width: 150px;height: 120px" -->
+           <div class="col-xs-10"><input type="hidden" id="k2" value="16500"/>  <span>Canon   <del>19500</del> <mark id="m2">l6500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q2" type="text" style="width:17px;text-align:center" value="1" /></div>
+           <div class="col-xs-2"><button id="p2" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+      <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+
+          <img src="images/sony2.jpg" style="width: 250px;height: 200px;opacity:0.4" >
+          <div class="col-xs-10"><input type="hidden" id="k3" value="17500"/>  <span>Sony k   <del>19500</del> <mark id="m3">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q3" type="text" style="width:17px;text-align:center" value="1" /></div>
+          <div class="col-xs-2"><button id="p3" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+      </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/samsung2.jpg" style="width: 250px;height: 200px;opacity:0.4">
+        <div class="col-xs-10"><input type="hidden" id="k4" value="13500"/> <span>Samsung   <del>19500</del> <mark id="m4">l3500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q4" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p4" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/LCD1.jpg" style="width: 250px;height: 200px;opacity:0.4">
+        <div class="col-xs-10"> <input type="hidden" id="k5" value="500"/><span>Sony k   <del>19500</del> <mark id="m5">500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q5" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p5" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue"><!--thumbnail-->
+        <img src="images/LCD2.jpg" style="width: 250px;height: 200px ;opacity:0.4">
+        <div class="col-xs-10"><input type="hidden" id="k6" value="1000"/> <span>Sony k   <del>19500</del> <mark id="m6">l000</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q6" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p6" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+  </div><!-- elec-->
+<div id="cloth1"><!--Clothed -->
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/cloth3.jpg" style="width: 250px;height: 200px">
+        <div class="col-xs-10"><input type="hidden" id="k7" value="1500"/> <span>Lady Style   <del>19500</del> <mark id="m7">l500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q7" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p7" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/cloth4.jpg" style="width: 250px;height: 200px"> <!-- style="width: 150px;height: 120px" -->
+        <div class="col-xs-10"> <input type="hidden" id="k8" value="850"/><span>T-shirt   <del>19500</del> <mark id="m8">850</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q8" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p8" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/clothes2.jpg" style="width: 250px;height: 200px" >
+        <div class="col-xs-10"> <span>Catch me   <del>19500</del> <mark id="m9">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q9" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p9" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/clothkid.jpg" style="width: 250px;height: 200px  ;opacity:0.4">
+        <div class="col-xs-10"> <span>Future style   <del>19500</del> <mark id="mm10">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="qq10" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="pp10" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/clothkid2.jpg" style="width: 250px;height: 200px  ;opacity:0.4">
+        <div class="col-xs-10"> <span>Genuis Kids  <del>19500</del> <mark id="m11">l7500</mark> SDG</span><span  style="margin-left:45px;">Qty:</span><input id="q11" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p11" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue"><!--thumbnail-->
+        <img src="images/clothkid.jpg" style="width: 250px;height: 200px  ;opacity:0.4">
+        <div class="col-xs-10"> <span>Hurry up   <del>19500</del> <mark id="m12">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q12" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p12" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+</div><!-- cloth-->
+<div id="food1"><!--Fodd1-->
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/fruit1.jpg" style="width: 250px;height: 200px">
+        <div class="col-xs-10"> <input type="hidden" id="k13" value="15500"/><span>Fresh   <del>19500</del> <mark id="m13">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q13" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p13" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/fruit2.jpg" style="width: 250px;height: 200px"> <!-- style="width: 150px;height: 120px" -->
+        <div class="col-xs-10"> <span>Todays   <del>19500</del> <mark id="m14">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q14" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p14" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/fruit3.jpg" style="width: 250px;height: 200px" >
+        <div class="col-xs-10"> <span>fruits   <del>19500</del> <mark id="m15">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q15" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p15" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/vigitable1.jpg" style="width: 250px;height: 200px">
+        <div class="col-xs-10"> <span>African    <del>19500</del> <mark id="m16">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q16" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p16" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue">
+        <img src="images/vigitable2.jpg" style="width: 250px;height: 200px">
+        <div class="col-xs-10"> <span>Fresh   <del>19500</del> <mark id="m17">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q17" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p17" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+    <div class="col-xs-4 thumbnail" style="background-color:powderblue"><!--thumbnail-->
+        <img src="images/vigitable3.jpg" style="width: 250px;height: 200px">
+        <div class="col-xs-10"> <span>Fresh   <del>19500</del> <mark id="m18">l7500</mark> SDG</span><span  style="margin-left:55px;">Qty:</span><input id="q18" type="text" style="width:17px;text-align:center" value="1" /></div>
+        <div class="col-xs-2"><button id="p18" style="margin-left:-13;margin-top:-7px" class="buys btn btn-primary">buy</button></div>
+    </div>
+</div><!-- food -->
+
+</div><!-- End Tabs-->
+<div id="Formu1" class="col-xs-8 col-offset-2 well" style="box-shadow:3px 3px 3px blue;margin-left: 15%;background-color:powderblue"><!-- Forum1 -->
+    <ul class="list-group">
+        <li class="list-group-item" style="background-color:lightsteelblue">
+            <div class="media">
+                <div class="media-body well">
+                    <h3>I bought Sony Camera, It's Very Tech Life style</h3>
+                    <p>And it's price is ok</p>
+                </div>
+                <div class="media-right" >
+                    <img src="images/male.png" id="1" class="media-object center-block" style="width:64px">
+                    <div><h5>Name:Hamza</h5></div>
+                    <div><h5>Gender:Male</h5></div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item" style="background-color:lightsteelblue">
+            <div class="media ">
+                <div class="media-body well">
+                    <h3>I bought LCD, It's Very Tech Life style</h3>
+                    <p>And it's price is ok</p>
+                </div>
+                <div class="media-right">
+                    <img src="images/female.png" id="2" class="media-object center-block" style="width:64px">
+                    <div><h5>Name:Hoda</h5></div><!--class="col-xs-4"-->
+                    <div><h5>Gender:Female</h5></div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <form class="form-horizontal" >
+        <div class="form-group has-feedback" id="fdback">
+            <label class="col-xs-2 control-label">Name</label>
+            <div class="col-xs-10">
+                <input type="text" class="form-control" id="name1">
+            </div>
+        </div>
+        <div class="form-group " >
+            <label class="col-xs-2 control-label" style="margin-right: 25px">gender</label>
+            <label class="radio-inline"><input type="radio" name="gender" value="male">Male</label>
+            <label class="radio-inline"><input type="radio" name="gender" value="female">Female</label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-2 control-label">Title</label>
+            <div class="col-xs-10">
+                <input type="text" class="form-control" id="title1">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2 control-label">Comment</label>
+            <div class="col-xs-10">
+                <textarea  class="form-control" rows="6" id="comment1"></textarea>
+            </div>
+        </div>
+    </form>
+    <div class="col-xs-10 col-xs-offset-2">
+        <button class="btn btn-primary" id="addcomment">Submit</button>
+        <div class="alert alert-success fade" style="margin-top:-7px;width: 285px ">
+            Thank you for your interest (:
+        </div>
+        <div class="alert alert-danger fade" style="margin-top:-45px;width: 285px ">
+            please fill all feilds !
+        </div>
+    </div>
+</div><!-- Forum2 -->
+<!-- Contact1 -->
+<div id="inner" Style="background-color:#AFEEEE; "><!-- Contact1 -->
+    <div id="Contact1" class="col-xs-6 col-offset-3 well container" style="margin-left:25%;background-color:#AFEEEE;border:groove;box-shadow:3px 3px 5px blue;border-radius: 5px" >
+        <img src="Images/male.png"  style="width:100px; height:80px;margin-left:45%; margin-bottom:1%">
+        <form class="form-horizontal"  name="vform" >
+            <div class="form-group" >
+                <label class="col-xs-2 control-label">Name</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="username" id="infoname">
+                    <div id="name_error" class="val_error">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label" style="margin-right: 25px">Gender</label>
+                <label class="radio-inline  "><input type="radio" name="gender" id="g1" value="male" >Male</label>
+                <label class="radio-inline"><input type="radio" name="gender" id="g2" checked value="female">Female</label>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label">Info</label>
+                <div class="col-xs-10">
+                    <textarea  class="form-control" rows="6" id="info3" title=""></textarea>
+                </div>
+            </div>
+
+        </form>
+        <div class="col-xs-10 col-xs-offset-2">
+            <button  type="submit" class="btn btn-primary contactinfo">submit</button><label id="geterror"></label>
+        </div>
+    </div>
+
+</div>
+
+<!-- Contact -->
+<!-- Modal11-->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <a href="#" class="close" ><img src="images/x.ico" ></a>
+                <img src="Images/male.png" id="farewell" style="width:100px; height:80px;margin-left:40%">
+            </div>
+            <div class="modal-body">
+
+                <img src="images/thank.png"  style="width:565px; height:300px">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal12-->
+<!-- Modal21-->
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+              <!--  <a href="#" class="close">x</a> -->
+                Please enter your name and select paiment type !!!
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Name:</label>
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group " >
+                        <label class="col-xs-2 control-label" style="margin-right: 25px">Currency:</label>
+                        <label class="radio-inline"><input type="radio" id="sdg" name="paytype" value="SDG" checked="checked">local</label>
+                        <label class="radio-inline"><input type="radio" id="dollar" name="paytype" value="Dolar">Doller  <span style="background-color:blue;color:yellow">* Rate is: 1$ = 40SDG</span></label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Total:</label>
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control" id="price">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Credit:</label>
+                        <div class="col-xs-10">
+                            <input type="text"  class="form-control" >
+                        </div>
+                    </div>
+                    <div class="checkbox" style="margin-left:105px;margin-top:9px">
+                        <label style="margin-top:9px"><input type="checkbox" id="agree" style="margin-left:-25px;" name="agree" value="SDG" >All information is valid !</label>
+                    </div>
+                </form>
+                <button id="sent" class="btn btn-primary btn-block">send</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal22-->
+</body>
+<footer class="bg-primary navbar-fixed-bottom">
+    <h5 >Designed by IsamHalfa &copy;2018"></h5>
+</footer>
+</html>
